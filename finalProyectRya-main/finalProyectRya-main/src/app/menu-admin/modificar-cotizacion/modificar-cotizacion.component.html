@@ -1,0 +1,334 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+
+
+    <section class="content">
+        <div class="container-fluid">
+
+
+            <div class="row px-2 mb-3">
+                <div class="col-sm-12">
+
+                    <div class="card ">
+                        <div class="card-header">
+
+                            <h2 class="mx-2 blockquote">Modificar cotización</h2>
+
+                        </div>
+
+
+                        <div class="card-body">
+
+                            <div class="row g-3 mb-3">
+
+                                <div class="col-sm-1 mt-4 ml-2">
+                                    <label for="exampleFormControlInput1" class="form-label">Cliente</label>
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <fieldset disabled>
+                                        <input type="tex" placeholder="Luis" class="form-control">
+                                    </fieldset>
+                                </div>
+
+                            </div>
+
+                            <div class="row g-3 mb-3">
+
+                                <div class="col-auto">
+
+                                    <label for="exampleFormControlInput1" class="form-label ml-2">Subtotal</label>
+
+                                    <div class="col-sm-8">
+                                        <fieldset disabled>
+                                            <input type="number" placeholder="1.500.000" class="form-control">
+                                        </fieldset>
+                                    </div>
+
+                                </div>
+                                <div class="col-auto">
+                                    <!-- <div class="col-sm-4"> -->
+                                    <label for="exampleFormControlInput1" class="form-label ml-2">Fecha
+                                        vencimiento</label>
+
+                                    <!-- </div> -->
+
+                                    <div class="col-sm-12">
+                                        <input type="date" class="form-control">
+                                    </div>
+
+                                </div>
+
+                                <div class="col-auto">
+
+                                    <label for="exampleFormControlInput1" class="form-label ml-2">Mano de obra</label>
+
+                                    <div class="col-sm-12">
+                                        <input type="number" class="form-control" placeholder="Costo mano de obra">
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <div class="row p-2">
+                <div class="col-md-12">
+
+                    <div class="card">
+
+
+
+                        <div class="card-body">
+
+
+                            <form>
+                                <div class="row g-3">
+                    
+                                  <div class="row g-2">
+                    
+                                    <div class="row g-3">
+                    
+                          
+                                      <div class="col-sm-4">
+                    
+                                        <label for="floatingTextarea2 ">Categoría servicio</label>
+                                        <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
+                                          <option value="1">Obra blanca</option>
+                                          <option value="2">Obra negra</option>
+                                          <option value="3">Obra gris</option>
+                                        </select>
+                                        
+                                      </div>
+                    
+                    
+                                      <div class="col-sm-4">
+                    
+                                        <label for="floatingTextarea2">Seleccionar servicio</label>
+                                        <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
+                                          <option value="1">Estuco</option>
+                                          <option value="2">Reestructuración</option>
+                                          <option value="3">Acabados</option>
+                                          <option value="4">Otro</option>
+                                        </select>
+                                        
+                    
+                                      </div>
+                    
+                                      <div class="col-sm-4 mt-5">
+                    
+                            
+                                          <div class="col-sm-5">
+                                            <fieldset disabled>
+                                              <input type="tex" placeholder="Otro" class="form-control">
+                                            </fieldset>
+                                          </div>
+                          
+                                      </div>
+                    
+                    
+                                    </div>
+                    
+                                    <div class="row g-3 mb-3">
+                    
+                                    
+                                      
+                    
+                    
+                                      <div class="col-sm-4">
+                                        <input type="number"
+                                        class="form-control" placeholder="Cantidad">
+                    
+                                      </div>
+                                    </div>
+                    
+                                    <div class="row g-2 mt-2">
+                    
+                    
+                                      <div class="form-floating col-md-12 mb-2">
+                                        <textarea 
+                                        class="form-control" placeholder="Describa el servicio que desea"
+                                          id="floatingTextarea2" style="height: 100px"></textarea>
+                                        <label for="floatingTextarea2">Descripción</label>
+                    
+                                      </div>
+                                    </div>
+                                    
+                                    <div class="col-auto">
+                                      <button (click)="agregarCotizacion()" class="btn btn-success float-right">Agregar
+                                      servicio</button>
+                                    </div>
+                    
+                                  </div>
+                    
+                                </div>
+                              </form>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <div class="row p-2 mt-3 mb-5">
+                <div class="col-12">
+                    <div class="card">
+                      
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <section class="ftco-section">
+                                <div class="container">
+                                    <div class="row justify-content-center">
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="table-wrap">
+
+
+                                                <table id="example2" class="table table-bordered table-hover">
+                                                    <thead class="table-dark">
+                                                        <tr>
+                                                            <th>Servicio</th>
+                                                            <th>Cantidad</th>
+                                                            <th>Descripción</th>
+                                                            <th>Fecha inicio</th>
+                                                            <th>Fecha de vencimiento</th>
+                                                            <th>Total</th>
+                                                            <th>Acciones</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let cotizacion of cotizaciones">
+                                                            <td>{{ cotizacion.servicio }}</td>
+                                                            <td>{{ cotizacion.cantidad }}</td>
+                                                            <td><button class="btn btn-success" data-toggle="modal"
+                                                                    data-target="#exampleModal"><i
+                                                                        class="fa-solid fa-plus"></i></button>
+                                                            </td>
+                                                            <td>{{ cotizacion.fechaInicio }}</td>
+                                                            <td>{{ cotizacion.fechaDuracion }}</td>
+                                                            <td>{{ cotizacion.total }}</td>
+                                                            <td><button routerLink="../materiales-modificarcotizacion" class="btn btn-warning m-2"><i
+                                                                        class="fa-solid fa-pen-to-square"
+                                                                        (click)="cargarCotizacion(cotizacion)"></i></button>
+                                                                <button class="btn btn-danger"
+                                                                    (click)="eliminarCotizacion(cotizacion)"><i
+                                                                        class="fa-sharp fa-solid fa-trash-can"></i></button>
+                                                            </td>
+
+                                                    </tbody>
+
+                                                </table>
+
+                                                <div class="col-auto">
+                                                    <button routerLink="../cotizaciones" type="button"
+                                                        class="btn btn-primary float-right mx-2">Guardar</button>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <button routerLink="../obras" type="button" class="btn btn-success float-right">Crear
+                                                        obra</button>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <button routerLink="../cotizaciones" type="button"
+                                                        class="btn btn-danger float-right mx-2">Cancelar</button>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+
+
+
+
+        <div class="modal fade" id="modificarServicio" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modificar servicio</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+    
+              <div class="container">
+                <!-- Info boxes -->
+                <div class="row p-2">
+                  <div class="col-md-12">
+                    <div class="mb-3">
+                      <label for="exampleFormControlInput1" class="form-label">Servicio</label>
+                      <input type="text" [(ngModel)]="editCotizacion.servicio" class="form-control"
+                        placeholder="Ingrese el servicio">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleFormControlInput1" class="form-label">Cantidad</label>
+                      <input type="number" [(ngModel)]="editCotizacion.cantidad" class="form-control"
+                        placeholder="Ingrese la cantidad">
+                    </div>
+                    <div class="form-floating">
+                      <textarea class="form-control" [(ngModel)]="editCotizacion.descripcion"
+                        placeholder="Ingresa una descripcion" id="floatingTextarea2" style="height: 100px"></textarea>
+                    </div>
+    
+                  </div>
+                </div>
+              </div>
+    
+    
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+    
+              <button type="button" class="btn btn-primary" (click)="modificarCotizacion()"
+                data-dismiss="modal">Modificar</button>
+            </div>
+          </div>
+    
+    
+    
+    
+    
+    
+        </div>
+      </div>
+
+    </section>
+
+</div>

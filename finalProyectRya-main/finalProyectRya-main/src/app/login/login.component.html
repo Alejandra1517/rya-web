@@ -1,0 +1,135 @@
+<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+          class="img-fluid" alt="Sample image">
+      </div>
+<!-- 
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+    -->
+      <div class="col-md-8 col-lg-6 col-xl-4">
+        <form
+        [formGroup]="loginForm">
+          
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form3Example3">Correo</label>
+            <input 
+            formControlName="correo"
+            type="email" id="form3Example3" class="form-control form-control-lg"
+              placeholder="Ingrese su correo" />
+
+              <div
+              class="text-danger"
+              *ngIf="
+                loginForm
+                  .get('correo')
+                  ?.hasError('required') &&
+                loginForm.get('correo')?.touched
+              "
+            >
+              <span>Llene este campo para iniciar sesión</span>
+            </div>
+
+            <div
+              class="text-danger"
+              *ngIf="
+                loginForm
+                  .get('correo')
+                  ?.hasError('pattern') && (
+                loginForm.get('correo')?.touched && loginForm.get('correo')?.dirty) 
+              "
+            >
+              <span>Ingrese un correo que sea <strong>valido</strong></span>
+            </div>
+
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-3">
+            <label class="form-label" for="form3Example4">Contraseña</label>
+            <input 
+            formControlName="contrasena"
+            type="password" id="form3Example4" class="form-control form-control-lg"
+              placeholder="Ingrese su contraseña" />
+
+              <div
+              class="text-danger"
+              *ngIf="
+                loginForm
+                  .get('contrasena')
+                  ?.hasError('required') &&
+                loginForm.get('contrasena')?.touched
+              "
+            >
+              <span>Llene este campo para iniciar sesión</span>
+            </div>
+
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center">
+            <!-- Checkbox -->
+            <div class="form-check mb-0">
+              <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+              <label class="form-check-label" for="form2Example3">
+                Recordar
+              </label>
+            </div>
+            <a data-toggle="modal" data-target="#exampleModal" class="text-body">¿Olvidaste tu contraseña?</a>
+          </div>
+
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button  
+            [disabled]="loginForm.invalid" routerLink="../main-sidebar2" type="button" class="btn btn-primary btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;">Iniciar sesión</button>
+            <p class="small fw-bold mt-2 pt-1 mb-0">¿No tienes una cuenta? <a routerLink="../registrarse"
+                class="link-danger">Registrarme</a></p>
+          </div>
+
+        </form>
+
+
+        <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Recuperar cuenta</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+
+        <div class="input-group mb-3 mt-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">@</span>
+          </div>
+          <input type="text" class="form-control" placeholder="Ingrese su correo electrónico" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary"  data-dismiss="modal">Enviar enlace de inicio de sesión</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+    </div>
+  </div>
+</section>

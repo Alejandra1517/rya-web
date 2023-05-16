@@ -1,0 +1,263 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+       
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+ 
+
+    <section class="content">
+      <div class="container-fluid">
+
+    
+        <div class="row">
+
+          <div class="col-12">
+            <h2 class="mb-5 mx-2 blockquote">Cotizaciones</h2>
+            <div class="card">
+              <div class="card-header">
+                <nav class="navbar bg-light mx-3">
+                    <form class="d-flex" role="search">
+                      <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                      <button class="btn btn-outline-success" type="submit">Buscar</button>
+                    </form>
+         
+                    <button routerLink="../crear-cotizacion" class="btn btn-success float-right mt-1"><i class="fa-solid fa-plus"></i></button>
+                </nav>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <section class="ftco-section">
+                  <div class="container">
+                    <div class="row justify-content-center">
+              
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="table-wrap">
+
+
+                          <table id="example2" class="table table-bordered table-hover">
+                            <thead class="table-dark">
+                            <tr>
+                              <th>Cliente</th>
+                              <th>Estado</th>
+                              <th>Fecha inicio</th>
+                              <th>Fecha duración</th>
+                              <th>Acciones</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let cotizacion of cotizacionesArray">
+                               <td>{{ cotizacion.cliente }}</td>
+                               <td>
+                                <select class="form-select" aria-label="Default select example">
+                                  <option value="1">Aprobada</option>
+                                  <option value="2">Por aprobar</option>
+                                  <option value="3">Enviada</option>
+                                </select>
+                               </td>
+                               <td>{{ cotizacion.fechaInicio }}</td>
+                               <td>{{ cotizacion.fechaDuracion }}</td>
+                               
+                              <td><button routerLink="../modificar-cotizacion" class="btn btn-warning m-2"><i class="fa-solid fa-pen-to-square"></i></button> <button class="btn btn-danger" (click)="eliminarCotizacion(cotizacion)"><i class="fa-sharp fa-solid fa-trash-can"></i></button></td>
+                         
+                            </tbody>
+                           
+                          </table>
+                        
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              
+              </div>
+              <!-- /.card-body -->
+            </div>
+        
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+
+    </section>
+
+
+
+
+<!-- modificarUsu -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modificar cotización</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="container">
+             <!-- Info boxes -->
+            <div class="row p-2">
+            <div class="col-md-12">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Cliente</label>
+              <input type="text" [(ngModel)]="editCotizacion.cliente" class="form-control" placeholder="Ingrese el nombre del cliente">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Estado</label>
+              <input type="text" [(ngModel)]="editCotizacion.estado" class="form-control" placeholder="Ingrese el estado">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Fecha inicio</label>
+              <input type="text" [(ngModel)]="editCotizacion.fechaInicio" class="form-control" placeholder="Ingrese la fecha de inicio">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Fecha duración</label>
+              <input type="text" [(ngModel)]="editCotizacion.fechaDuracion" class="form-control" placeholder="Ingrese la fecha de duracion">
+            </div>
+          </div>
+        </div>
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        
+        <button type="button" class="btn btn-primary" (click)="editarCotizacion()" data-dismiss="modal">Modificar</button>
+      </div>
+    </div>
+
+
+
+
+
+
+  </div>
+</div>
+
+
+
+<!-- crearUsu -->
+<div class="modal modal-lg fade" id="crearUsu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Crear cotización</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="container-fluid">
+             <!-- Info boxes -->
+             <div class="row p-2">
+              <div class="col-md-3">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Cliente</label>
+                  <input type="text" [(ngModel)]="selectedCotizacion.cliente" class="form-control">
+                </div>
+              </div>
+                <div class="col-md-3">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Servicio</label>
+                  <input type="text" [(ngModel)]="selectedCotizacion.estado" class="form-control">
+                </div>
+                </div>
+                <div class="col-md-3">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Cantidad</label>
+                  <input type="text" [(ngModel)]="selectedCotizacion.fechaInicio" class="form-control">
+                </div>
+              </div>  
+              <div class="col-md-3">
+                <div class="mb-3">
+                <button class="btn btn-success">Agregar servicio</button>
+              </div>  
+            </div>  
+            </div>
+
+
+            <div class="row p-2">
+              <div class="col-md-3">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Fecha de creación</label>
+                  <input type="date" [(ngModel)]="selectedCotizacion.cliente" class="form-control">
+                </div>
+              </div>
+                <div class="col-md-3">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Fecha de vencimiento</label>
+                  <input type="date" [(ngModel)]="selectedCotizacion.estado" class="form-control">
+                </div>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+              <div class="col-ms-4">
+                <div class="table-wrap">
+
+
+                  <table  id="example2" class="table table-bordered table-hover">
+                    <thead class="table-dark">
+                    <tr>
+                      <th>Cliente</th>
+                      <th>Servicio</th>
+                      <th>Cantidad</th>
+                      <th>Cantidad</th>
+                      <th>Materiales</th>
+                      <th>Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let cotizacion of cotizacionesArray">
+                       <td>{{ cotizacion.cliente }}</td>
+                       <td>{{ cotizacion.estado }}</td>
+                       <td>{{ cotizacion.estado }}</td>
+                       <td>{{ cotizacion.estado }}</td>
+                       <td> <button class="btn btn-success" data-toggle="modal" data-target="#crearUsu"><i class="fa-solid fa-plus"></i></button></td>
+
+                       <td><button class="btn btn-warning m-2" data-toggle="modal" data-target="#exampleModal" (click)="cargarCotizacion(cotizacion)"><i class="fa-solid fa-pen-to-square"></i></button> <button class="btn btn-danger" (click)="eliminarCotizacion(cotizacion)"><i class="fa-sharp fa-solid fa-trash-can"></i></button></td>
+                       
+                 
+                    </tbody>
+                   
+                  </table>
+                
+                </div>
+              </div>
+            </div>
+
+
+        </div>
+
+    
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button"  class="btn btn-primary" (click)="agregarCotizacion()" data-dismiss="modal">Guardar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+  
+
+  </div>

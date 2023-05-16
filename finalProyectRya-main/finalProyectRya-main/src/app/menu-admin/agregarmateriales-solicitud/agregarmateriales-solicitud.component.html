@@ -1,0 +1,197 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+  
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+  
+  
+  
+    <section class="content">
+      <div class="container">
+        
+      
+        <div class="row px-2 mb-3">
+          <div class="col-md-12">
+        <div class="card">
+  
+  
+          <div class="card-body">
+  
+            <form>
+              <div class="row g-3">
+  
+                <div class="row g-2">
+  
+                  <div class="row g-3">
+  
+        
+                    <div class="col-sm-4">
+  
+                      <label for="floatingTextarea2 ">Categoría servicio</label>
+                      <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
+                        <option value="1">Obra blanca</option>
+                        <option value="2">Obra negra</option>
+                        <option value="3">Obra gris</option>
+                      </select>
+                      
+                    </div>
+  
+  
+                    <div class="col-sm-4">
+  
+                      <label for="floatingTextarea2">Seleccionar servicio</label>
+                      <select class="form-select form-select-md mb-3" aria-label=".form-select-lg example">
+                        <option value="1">Estuco</option>
+                        <option value="2">Reestructuración</option>
+                        <option value="3">Acabados</option>
+                        <option value="4">Otro</option>
+                      </select>
+                      
+  
+                    </div>
+  
+                    <div class="col-sm-4 mt-5">
+  
+          
+                        <div class="col-sm-5">
+                          <fieldset disabled>
+                            <input type="tex" placeholder="Otro" class="form-control">
+                          </fieldset>
+                        </div>
+        
+                    </div>
+  
+  
+                  </div>
+  
+                  <div class="row g-3 mb-3">
+  
+                  
+                    
+  
+  
+                    <div class="col-sm-4">
+                      <input type="number"
+                      class="form-control" placeholder="Cantidad">
+  
+                    </div>
+                  </div>
+  
+                  <div class="row g-2 mt-2">
+  
+  
+                    <div class="form-floating col-md-12 mb-2">
+                      <textarea 
+                      class="form-control" placeholder="Describa el servicio que desea"
+                        id="floatingTextarea2" style="height: 100px"></textarea>
+                      <label for="floatingTextarea2">Descripción</label>
+  
+                    </div>
+                  </div>
+
+                </div>
+  
+              </div>
+            </form>
+  
+  
+          </div>
+        </div>
+      </div>
+      </div>
+  
+
+      <div class="row px-2 mb-3">
+        <div class="col-md-12">
+      <div class="card">
+
+
+        <div class="card-header">
+
+            <h2 class="mx-2 blockquote">Agregar materiales</h2>
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="row p-2">
+                <div class="col-md-12">
+  
+  
+                  <nav class="navbar bg-light mx-3">
+                    <form class="d-flex" role="search">
+                      <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                      <button class="btn btn-outline-success" type="submit">Buscar</button>
+                    </form>
+  
+                  </nav>
+  
+                  <ul class="list-group p-2">
+                    <li class="list-group-item">Cemento</li>
+                  </ul>
+  
+                  <table id="example2" class="table table-bordered table-hover mt-4 p-2">
+                    <thead class="table-dark">
+                      <tr>
+                        <th>Nombre material</th>
+                        <th>Cantidad</th>
+                        <th>Precio unitario</th>
+                        <th>Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Cemento</td>
+                        <td>
+                          <input type="number" class="form-control sm-3" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" value="2">
+                        </td>
+                        <td>30.000</td>
+                        <td>
+  
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                          </div>
+  
+                        </td>
+                    </tbody>
+  
+                  </table>
+  
+                  <label for="exampleFormControlInput1" class="form-label">Total materiales</label>
+  
+                  <fieldset disabled>
+                    <input type="number" placeholder="100.000" class="form-control col-sm-3">
+                  </fieldset>
+  
+  
+                  
+                  <div class="col-auto mt-3">
+                    <button routerLink="../modificar-solicitud" class="btn btn-secondary float-right ml-2">Volver</button>
+                  </div>
+
+                  <div class="col-auto">
+                    <button  routerLink="../modificar-solicitud" class="btn btn-warning float-right ml-2">Modificar</button>
+                  </div>
+  
+                
+                </div>
+              </div>
+
+
+
+
+        </div>
+      </div>
+    </div>
+    </div>
+
+  
+
+  </div>

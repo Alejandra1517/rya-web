@@ -1,0 +1,317 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+     
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="mb-5 mx-2 blockquote">Usuarios</h2>
+          <div class="card">
+            <div class="card-header">
+              <nav class="navbar bg-light mx-3">
+                  <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                  </form>
+       
+                  <button class="btn btn-success float-right mt-1" data-toggle="modal" data-target="#crearUsu"><i class="fa-solid fa-plus"></i></button>
+              </nav>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <section class="ftco-section">
+                <div class="container">
+                  <div class="row justify-content-center">
+            
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="table-wrap">
+
+
+                        <table id="example2" class="table table-bordered table-hover">
+                          <thead class="table-dark">
+                          <tr>
+                            <th>Id Usuario</th>
+                            <th>Nombre rol</th>
+                            <th>Correo</th>
+                            <th>Estado</th>
+                            <th>Fecha de registro</th>
+                            <th>Acciones</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr *ngFor="let usuario of usuarios">
+                             <td>{{ usuario.idUsuario }}</td>
+                             <td>{{ usuario.nombreRol }}</td>
+                             <td>{{ usuario.correo }}</td>
+                             <td>{{ usuario.estado }}</td>
+                             <td>{{ usuario.fechaRegistro }}</td>
+                             
+                            <td><button class="btn btn-warning m-2" data-toggle="modal" data-target="#exampleModal" (click)="cargarUsu(usuario)"><i class="fa-solid fa-pen-to-square"></i></button> <button class="btn btn-danger" (click)="eliminarUsu(usuario)"><i class="fa-sharp fa-solid fa-trash-can"></i></button></td>
+                       
+                          </tbody>
+                         
+                        </table>
+                      
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            
+            </div>
+            <!-- /.card-body -->
+          </div>
+      
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+
+  </section>
+
+
+
+
+<!-- modificarUsu -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Modificar Usuario</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <div class="container">
+           <!-- Info boxes -->
+        <form class="mt-3" [formGroup]="usuariosEditForm" (ngSubmit)="modificarUsuario()">
+      <div class="row p-2">
+
+        <div class="col-md-12">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Nombre rol</label>
+            <input type="text" formControlName="nombreRol" [(ngModel)]="editUsuario.nombreRol"  class="form-control" placeholder="Ingrese el nombre del rol">
+         
+            <div
+            class="text-danger"
+            *ngIf="
+              usuariosEditForm
+                .get('nombreRol')
+                ?.hasError('required') &&
+              usuariosEditForm.get('nombreRol')?.touched
+            "
+          >
+            <span>El nombre del rol<strong>es obligatorio</strong></span>
+          </div>
+          
+
+          <div
+            class="text-danger"
+            *ngIf="
+              usuariosEditForm
+                .get('nombreRol')
+                ?.hasError('pattern') &&
+              usuariosEditForm.get('nombreRol')?.dirty
+            "
+          >
+            <span>Ingrese solamente <strong> texto </strong></span>
+          </div>
+        
+
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Correo</label>
+            <input type="text" formControlName="correo" [(ngModel)]="editUsuario.correo" class="form-control" placeholder="Ingrese un correo">
+         
+         
+            <div
+            class="text-danger"
+            *ngIf="
+              usuariosEditForm
+                .get('correo')
+                ?.hasError('required') &&
+              usuariosEditForm.get('correo')?.touched
+            "
+          >
+            <span>El correo <strong> es obligatorio </strong></span>
+          </div>
+
+          
+          <div
+          class="text-danger"
+          *ngIf="
+            usuariosEditForm.get('correo') ?.hasError('pattern') && (usuariosEditForm.get('correo')?.touched &&  usuariosEditForm.get('correo')?.dirty) ">
+          <span>Ingrese un correo <strong> valido </strong></span>
+        </div>
+
+
+
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Contraseña</label>
+            <input type="password" formControlName="contrasena" [(ngModel)]="editUsuario.contrasena" class="form-control" placeholder="Ingrese una contraseña">
+         
+         
+            <div
+            class="text-danger"
+            *ngIf="
+              usuariosEditForm
+                .get('contrasena')
+                ?.hasError('required') &&
+              usuariosEditForm.get('contrasena')?.touched
+            "
+          >
+            <span>La contraseña <strong>es obligatorio</strong></span>
+          </div>
+
+
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label"
+              >Estado</label>
+            <select class="form-select col-md-4" aria-label="Default select example">
+              <option selected>Activo</option>
+              <option value="1">Inactivo</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          
+          <button type="submit" [disabled]="usuariosEditForm.invalid" class="btn btn-primary">Modificar</button>
+        </div>
+
+
+      </div>
+
+    </form>
+
+      
+      </div>
+
+
+    </div>
+  </div>
+
+
+
+
+
+
+</div>
+</div>
+
+
+
+<!-- crearUsu -->
+<div class="modal fade" id="crearUsu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Registrar usuario</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <div class="container">
+           <!-- Info boxes -->
+        <form class="mt-3" [formGroup]="usuariosForm" (ngSubmit)="agregarUsuario()">
+           <div class="row p-2">
+            <div class="col-md-12">
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Nombre rol</label>
+                <input type="text" formControlName="nombreRol" [(ngModel)]="selectedUsuario.nombreRol"  class="form-control" placeholder="Ingrese un nombre de rol">
+  
+                <div class="text-danger"
+                *ngIf="usuariosForm.get('nombreRol')?.hasError('required') && usuariosForm.get('nombreRol')?.touched">
+                <span>El nombre del rol <strong>es obligatorio</strong></span>
+            </div>
+
+            
+            <div class="text-danger"
+            *ngIf="usuariosForm.get('nombreRol')?.hasError('pattern') && usuariosForm.get('nombreRol')?.dirty">
+            <span>Ingrese solamente <strong> texto </strong></span>
+            </div>
+             
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Correo</label>
+                <input type="text" formControlName="correo" [(ngModel)]="selectedUsuario.correo" class="form-control" placeholder="Ingrese un correo">
+              
+                <div class="text-danger"
+                *ngIf="usuariosForm.get('correo')?.hasError('required') && usuariosForm.get('correo')?.touched">
+                <span>El correo <strong> es obligatorio </strong></span>
+            </div>
+              
+            <div class="text-danger"
+            *ngIf="usuariosForm.get('correo')?.hasError('pattern') && (usuariosForm.get('correo')?.touched && usuariosForm.get('correo')?.dirty)">
+            <span>Ingrese un correo <strong> valido </strong></span>
+           </div>
+
+              </div>
+
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Contraseña</label>
+                <input type="password" formControlName="contrasena" [(ngModel)]="selectedUsuario.contrasena" class="form-control" placeholder="Ingrese una contraseña">
+              
+                <div class="text-danger"
+                *ngIf="usuariosForm.get('contrasena')?.hasError('required') && usuariosForm.get('contrasena')?.touched">
+                <span>La contraseña <strong>es obligatorio</strong></span>
+            </div>
+              
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label"
+                  >Estado</label>
+                <select class="form-select col-md-4" aria-label="Default select example">
+                  <option selected>Activo</option>
+                  <option value="1">Inactivo</option>
+                </select>
+              </div>
+            </div>
+
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+              <button type="submit" [disabled]="usuariosForm.invalid" class="btn btn-primary">Guardar</button>
+            </div>
+
+          </div>
+        </form>
+
+
+      </div>
+
+  
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+
+
+</div>

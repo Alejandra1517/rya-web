@@ -1,0 +1,103 @@
+<app-main-header></app-main-header>
+
+<app-footer></app-footer>
+
+<!-- <app-content-wrapper></app-content-wrapper> -->
+
+<!-- <app-control-sidebar></app-control-sidebar>  -->
+
+
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="info">
+          <div class="w-12 bg-dark col-lg"><i class="fa-solid fa-helmet-safety"></i> R Y A</div>
+        </div>
+      </div>
+
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+        
+          <li class="nav-item">
+            <a class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Menú
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a routerLink="configuracion" class="nav-link">
+                  <i class="fa-sharp fa-solid fa-gear px-2"></i>
+                  <p>Configuración</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="usuarios" class="nav-link">
+                  <i class="fa-solid fa-user-group px-2"></i>
+                  <p>Usuarios</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="materiales" class="nav-link">
+                  <i class="fa-solid fa-screwdriver-wrench px-2"></i>
+                  <p>Materiales</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="servicios" class="nav-link">
+                  <i class="fa-solid fa-person-digging px-2"></i>
+                  <p>Servicios</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="empleados" class="nav-link">
+                  <i class="fa-solid fa-helmet-safety px-2"></i>
+                  <p>Empleados</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="clientes" class="nav-link">
+                  <i class="fa-solid fa-user-group px-2"></i>
+                  <p>Clientes</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="solicitudes" class="nav-link">
+                  <i class="fa-regular fa-floppy-disk px-2"></i>
+                  <p>Solicitudes</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="cotizaciones" class="nav-link"><i class="fa-solid fa-newspaper px-2"></i>
+                  <p>Cotizaciones</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="obras" class="nav-link">
+                  <i class="fa-sharp fa-solid fa-trowel-bricks px-2"></i>
+                  <p>Obras</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <router-outlet></router-outlet>

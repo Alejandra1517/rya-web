@@ -1,0 +1,204 @@
+<section class="vh-100">
+    <div class="container-fluid h-custom">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-9 col-lg-6 col-xl-5">
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+            class="img-fluid" alt="Sample image">
+        </div>
+ 
+
+        <div class="col-md-8 col-lg-6 col-xl-4">
+          <form [formGroup]="registrarseForm">
+            
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <input 
+              formControlName="nombre"
+              type="text" id="form3Example3" class="form-control form-control-lg"
+                placeholder="Ingrese su nombre" />
+
+                <div
+                class="text-danger"
+                *ngIf="
+                  registrarseForm
+                    .get('nombre')
+                    ?.hasError('required') &&
+                  registrarseForm.get('nombre')?.touched
+                "
+              >
+                <span>Este campo es  <strong>obligatorio</strong></span>
+              </div>
+  
+
+            </div>
+  
+            <!-- Password input -->
+            <div class="form-outline mb-3">
+              <input 
+              formControlName="correo"
+              type="email" id="form3Example4" class="form-control form-control-lg"
+                placeholder="Ingrese su correo" />
+
+
+                <div
+                class="text-danger"
+                *ngIf="
+                  registrarseForm
+                    .get('correo')
+                    ?.hasError('required') &&
+                  registrarseForm.get('correo')?.touched
+                "
+              >
+                <span>Este campo es  <strong>obligatorio</strong></span>
+              </div>
+
+              <div
+              class="text-danger"
+              *ngIf="
+                registrarseForm
+                  .get('correo')
+                  ?.hasError('pattern') &&
+                registrarseForm.get('correo')?.touched
+              "
+            >
+              <span>Ingrese un correo  <strong>valido</strong></span>
+            </div>
+
+
+            </div>
+
+            <div class="form-outline mb-3">
+              <input 
+              formControlName="documento"
+              type="number" id="form3Example4" class="form-control form-control-lg"
+                placeholder="Ingrese su documento" />
+
+                <div
+                class="text-danger"
+                *ngIf="
+                  registrarseForm
+                    .get('documento')
+                    ?.hasError('required') &&
+                  registrarseForm.get('documento')?.touched
+                "
+              >
+                <span>Este campo es  <strong>obligatorio</strong></span>
+              </div>
+
+              <div
+              class="text-danger" *ngIf="registrarseForm.get('documento')?.hasError('minlength') &&
+                (registrarseForm.get('documento')?.touched && registrarseForm.get('documento')?.dirty)"> 
+                <span>Debe ingresar por lo menos
+                <strong> 8 números </strong></span>
+            </div>
+
+            </div>
+
+            <div class="form-outline mb-3">
+              <input 
+              formControlName="telefono"
+              type="number" id="form3Example4" class="form-control form-control-lg"
+                placeholder="Ingrese su teléfono" />
+
+                <div
+                class="text-danger"
+                *ngIf="
+                  registrarseForm
+                    .get('telefono')
+                    ?.hasError('required') &&
+                  registrarseForm.get('telefono')?.touched
+                "
+              >
+                <span>Este campo es  <strong>obligatorio</strong></span>
+              </div>
+
+            </div>
+
+            <div class="form-outline mb-3">
+              <input
+              formControlName="direccion"
+              type="text" id="form3Example4" class="form-control form-control-lg"
+                placeholder="Ingrese su dirección" />
+
+                <div
+                class="text-danger"
+                *ngIf="
+                  registrarseForm
+                    .get('direccion')
+                    ?.hasError('required') &&
+                  registrarseForm.get('direccion')?.touched
+                "
+              >
+                <span>Este campo es  <strong>obligatorio</strong></span>
+              </div>
+
+
+            </div>
+  
+
+            <div class="form-outline mb-3">
+              <input 
+              formControlName="contrasena"
+              type="password" id="form3Example4" class="form-control form-control-lg"
+                placeholder="Ingrese su contraseña" />
+
+                <div
+                class="text-danger"
+                *ngIf="
+                  registrarseForm
+                    .get('contrasena')
+                    ?.hasError('required') &&
+                  registrarseForm.get('contrasena')?.touched
+                "
+              >
+                <span>Este campo es  <strong>obligatorio</strong></span>
+              </div>
+            </div>
+
+           
+  
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <button type="submit" [disabled]="registrarseForm.invalid" (click)="registradoCorrectamente()" type="button" class="btn btn-primary btn-lg"
+                style="padding-left: 2.5rem; padding-right: 2.5rem;">Registrarme</button>
+              <p class="small fw-bold mt-2 pt-1 mb-0">¿Ya tienes una cuenta? <a routerLink="../login"
+                  class="link-danger">Iniciar sesión</a></p>
+            </div>
+  
+          </form>
+  
+  
+          <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Recuperar cuenta</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+  
+          <div class="input-group mb-3 mt-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">@</span>
+            </div>
+            <input type="text" class="form-control" placeholder="Ingrese su correo electrónico" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+          
+  
+  
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary"  data-dismiss="modal">Enviar enlace de inicio de sesión</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+        </div>
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,311 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+     
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+
+  <!-- Main content -->  
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <h2 class="mb-5 mx-2 blockquote">Empleados</h2>
+        <div class="card">
+          <div class="card-header">
+            <nav class="navbar bg-light mx-3">
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Buscar</button>
+                </form>
+     
+                <button class="btn btn-success float-right mt-1" data-toggle="modal" data-target="#crearMaterial"><i class="fa-solid fa-plus"></i></button>
+            </nav>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body">
+            <section class="ftco-section">
+              <div class="container">
+                <div class="row justify-content-center">
+          
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="table-wrap">
+
+
+                      <table id="example2" class="table table-bordered table-hover">
+                        <thead class="table-dark">
+                          <tr>
+                            <th>Id empleado</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Teléfono</th>
+                            <th>Documento</th>
+                            <th>Dirección</th>
+                            <th>Estado</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr *ngFor="let empleado of empleados">
+                             <td>{{ empleado.id }}</td>
+                             <td>{{ empleado.nombre }}</td>
+                             <td>{{ empleado.apellido }}</td>
+                             <td>{{ empleado.telefono }}</td>
+                             <td>{{ empleado.documento }}</td>
+                             <td>{{ empleado.direccion }}</td>
+                             <td>{{ empleado.estado }}</td>
+                             <td>{{ empleado.fecha }}</td>
+                             
+                             <td><button class="btn btn-warning m-2" data-toggle="modal" data-target="#exampleModal" (click)="cargarEmpleado(empleado)" ><i class="fa-solid fa-pen-to-square"></i></button> <button class="btn btn-danger" (click)="eliminarEmpleado(empleado)"><i class="fa-sharp fa-solid fa-trash-can"></i></button></td>
+                       
+                       
+                          </tbody>
+                       
+                      </table>
+                    
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          
+          </div>
+          <!-- /.card-body -->
+        </div>
+    
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+
+
+
+  
+
+<!-- crearUsu -->
+<div class="modal fade" id="crearMaterial" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Registrar Empleado</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <div class="container">
+           <!-- Info boxes -->
+           <div class="row">
+      
+            <div class="col-lg-12">
+                      <form class="mt-3" [formGroup]="empleadosForm" (ngSubmit)="agregarEmpleado()">
+                          <div class="mb-3">
+                              <input type="text" formControlName="nombre" [(ngModel)]="selectedEmpleado.nombre" class="form-control form-control-lg"
+                                  placeholder="Nombre Empleado">
+                              <div class="text-danger"
+                                  *ngIf="empleadosForm.get('nombre')?.hasError('required') && empleadosForm.get('nombre')?.touched">
+                                  <span>El campo es <strong>es obligatorio</strong></span>
+                              </div>
+                              <div class="text-danger"
+                                  *ngIf="empleadosForm.get('nombre')?.hasError('pattern') && empleadosForm.get('nombre')?.dirty">
+                                  <span>Ingrese solo <strong> texto </strong></span>
+                              </div>
+                          </div>
+                          <div class="mb-3">
+                              <input type="text" formControlName="apellido" [(ngModel)]="selectedEmpleado.apellido" class="form-control form-control-lg"
+                                  placeholder="Apellido">
+                              <div class="text-danger"
+                                  *ngIf="empleadosForm.get('apellido')?.hasError('required') && empleadosForm.get('apellido')?.touched">
+                                  <span>El campo <strong>es obligatorio</strong></span>
+                              </div>
+                              <div class="text-danger"
+                                  *ngIf="empleadosForm.get('apellido')?.hasError('pattern') && empleadosForm.get('apellido')?.dirty">
+                                  <span>Ingrese solo <strong> texto </strong></span>
+                              </div>
+                          </div>
+
+                          <div class="mb-3">
+                            <input type="text" formControlName="documento" [(ngModel)]="selectedEmpleado.documento" class="form-control form-control-lg"
+                                placeholder="Documento">
+                            <div class="text-danger"
+                                *ngIf="empleadosForm.get('documento')?.hasError('required') && empleadosForm.get('documento')?.touched">
+                                <span>El campo <strong>es obligatorio</strong></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                          <input type="text" formControlName="telefono" [(ngModel)]="selectedEmpleado.telefono" class="form-control form-control-lg"
+                              placeholder="Teléfono">
+                          <div class="text-danger"
+                              *ngIf="empleadosForm.get('telefono')?.hasError('required') && empleadosForm.get('telefono')?.touched">
+                              <span>El campo <strong>es obligatorio</strong></span>
+                          </div>
+                      </div>
+
+                      <div class="mb-3">
+                        <input type="text" formControlName="direccion" [(ngModel)]="selectedEmpleado.direccion" class="form-control form-control-lg"
+                            placeholder="Dirección">
+                        <div class="text-danger"
+                            *ngIf="empleadosForm.get('direccion')?.hasError('required') && empleadosForm.get('direccion')?.touched">
+                            <span>El campo <strong>es obligatorio</strong></span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleFormControlInput1" class="form-label"
+                        >Estado</label>
+                      <select class="form-select col-md-4" aria-label="Default select example">
+                        <option selected>Activo</option>
+                        <option value="1">Inactivo</option>
+                      </select>
+                    </div>
+
+
+                          <div class="mb-3" class="modal-footer">
+                              <!-- <button routerLink="/" class="btn btn-secondary btn-lg float-start">VOLVER</button> -->
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
+                          <button  [disabled]="empleadosForm.invalid" type="submit"  class="btn btn-success">Registar</button>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+
+          </div>
+
+
+          </div>
+
+
+
+      </div>
+
+  
+    </div>
+  
+    
+  </div>
+
+
+
+
+
+<!-- modificarUsu -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Modificar Empleado</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <div class="container">
+           <!-- Info boxes -->
+      <div class="row">
+       
+
+        <div class="col-lg-12">
+          <form class="mt-3" [formGroup]="empleadosEditForm" (ngSubmit)="modificarEmpleado()">
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Nombre</label>
+                  <input type="text" formControlName="nombre" [(ngModel)]="editEmpleado.nombre" class="form-control form-control-lg"
+                      placeholder="Nombre">
+                  <div class="text-danger"
+                      *ngIf="empleadosEditForm.get('nombre')?.hasError('required') && empleadosEditForm.get('nombre')?.touched">
+                      <span>El este campo<strong>es obligatorio</strong></span>
+                  </div>
+                  <div class="text-danger"
+                  *ngIf="empleadosEditForm.get('nombre')?.hasError('pattern') && empleadosEditForm.get('nombre')?.dirty">
+                  <span>Ingrese solo <strong> texto </strong></span>
+              </div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Apellido</label>
+                  <input type="text" formControlName="apellido" [(ngModel)]="editEmpleado.apellido" class="form-control form-control-lg"
+                      placeholder="Apellido">
+                  <div class="text-danger"
+                      *ngIf="empleadosEditForm.get('apellido')?.hasError('required') && empleadosEditForm.get('apellido')?.touched">
+                      <span>Este campo <strong>es obligatoria</strong></span>
+                  </div>
+                  <div class="text-danger"
+                  *ngIf="empleadosEditForm.get('apellido')?.hasError('pattern') && empleadosEditForm.get('apellido')?.dirty">
+                  <span>Ingrese solo <strong> texto </strong></span>
+              </div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Documento</label>
+                  <input type="text" formControlName="documento" [(ngModel)]="editEmpleado.documento" class="form-control form-control-lg"
+                      placeholder="Documento">
+                  <div class="text-danger"
+                      *ngIf="empleadosEditForm.get('documento')?.hasError('required') && empleadosEditForm.get('documento')?.touched">
+                      <span>Este campo <strong>es obligatoria</strong></span>
+                  </div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Teléfono</label>
+                  <input type="text" formControlName="telefono" [(ngModel)]="editEmpleado.telefono" class="form-control form-control-lg"
+                      placeholder="Teléfono">
+                  <div class="text-danger"
+                      *ngIf="empleadosEditForm.get('telefono')?.hasError('required') && empleadosEditForm.get('telefono')?.touched">
+                      <span>Este campo <strong>es obligatoria</strong></span>
+                  </div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Dirección</label>
+                  <input type="text" formControlName="direccion" [(ngModel)]="editEmpleado.direccion" class="form-control form-control-lg"
+                      placeholder="Dirección">
+                  <div class="text-danger"
+                      *ngIf="empleadosEditForm.get('direccion')?.hasError('required') && empleadosEditForm.get('direccion')?.touched">
+                      <span>Este campo <strong>es obligatoria</strong></span>
+                  </div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label"
+                  >Estado</label>
+                <select class="form-select col-md-4" aria-label="Default select example">
+                  <option selected>Activo</option>
+                  <option value="1">Inactivo</option>
+                </select>
+              </div>
+              <div class="mb-3" class="modal-footer">
+                  <!-- <button routerLink="/" class="btn btn-secondary btn-lg float-start">VOLVER</button> -->
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
+              <button type="submit" [disabled]="empleadosEditForm.invalid" class="btn btn-success">Guardar</button>
+              </div>
+          </form>
+      </div>
+
+      </div>
+      </div>
+
+  </div>
+    </div>
+  </div>
+
+
+</div>
+<!-- </div> -->
+
+
+
+
+</section>
+
+
+
+<!-- </div> -->
+

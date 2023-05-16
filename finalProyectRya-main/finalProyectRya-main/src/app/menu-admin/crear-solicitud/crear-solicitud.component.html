@@ -1,0 +1,278 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row p-2">
+        <div class="col-md-12">
+
+          <div class="card">
+            <div class="card-header">
+
+              <h2 class="mx-2 blockquote">Crear solicitud</h2>
+
+            </div>
+
+
+            <div class="card-body">
+
+              <form [formGroup]="solicitudesForm" (ngSubmit)="agregarSolicitud()">
+                <div class="row g-3">
+
+                  <div class="row g-2">
+
+
+                    <div class="row g-3 mb-3">
+
+                      <div class="col-sm-6">
+                        <input type="text" 
+                        formControlName="servicio"
+                        [(ngModel)]="selectedSolicitudes.servicio"
+                        class="form-control" placeholder="Servicio">
+
+                        <div
+                        class="text-danger"
+                        *ngIf="
+                          solicitudesForm
+                            .get('servicio')
+                            ?.hasError('pattern') &&
+                            solicitudesForm.get('servicio')?.dirty
+                        "
+                      >
+                        <span>Ingrese solamente <strong> texto </strong></span>
+                      </div>
+
+                      <div
+                      class="text-danger"
+                      *ngIf="
+                      solicitudesForm
+                          .get('servicio')
+                          ?.hasError('required') &&
+                          solicitudesForm.get('servicio')?.touched
+                      "
+                    >
+                      <span>El campo es <strong>es obligatorio</strong></span>
+                    </div>
+                      </div>
+
+
+
+                      <div class="col-sm-6">
+                        <input type="number"
+                        formControlName="cantidad"
+                        [(ngModel)]="selectedSolicitudes.cantidad" 
+                        class="form-control" placeholder="Cantidad">
+
+                        <div
+                        class="text-danger"
+                        *ngIf="
+                        solicitudesForm
+                            .get('cantidad')
+                            ?.hasError('required') &&
+                            solicitudesForm.get('cantidad')?.touched
+                        "
+                      >
+                        <span>El campo es <strong>es obligatorio</strong></span>
+                      </div>
+                      </div>
+                    </div>
+
+                    <div class="row g-2 mt-2">
+
+
+                      <div class="form-floating col-md-12 mb-2">
+                        <textarea 
+                        formControlName="descripcion"
+                        [(ngModel)]="selectedSolicitudes.descripcion"
+                        class="form-control" placeholder="Describa el servicio que desea"
+                          id="floatingTextarea2" style="height: 100px"></textarea>
+                        <label for="floatingTextarea2">Descripción</label>
+
+
+                        <div
+                        class="text-danger"
+                        *ngIf="
+                          solicitudesForm
+                            .get('descripcion')
+                            ?.hasError('pattern') &&
+                            solicitudesForm.get('descripcion')?.dirty
+                        "
+                      >
+                        <span>Ingrese solamente <strong> texto </strong></span>
+                      </div>
+
+                      <div
+                        class="text-danger"
+                        *ngIf="
+                        solicitudesForm
+                            .get('descripcion')
+                            ?.hasError('required') &&
+                            solicitudesForm.get('descripcion')?.touched
+                        "
+                      >
+                        <span>El campo es <strong>es obligatorio</strong></span>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <button class="btn btn-secondary mx-2 float-right" routerLink="../solicitudes">Volver</button>
+                      <button [disabled]="solicitudesForm.invalid" class="btn btn-success float-right">Agregar
+                        solicitud</button>
+                    </div>
+
+                  </div>
+
+                </div>
+              </form>
+
+
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+
+      <div class="row p-2 mt-3 mb-5">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <nav class="navbar bg-light mx-3">
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Buscar</button>
+                </form>
+
+              </nav>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <section class="ftco-section">
+                <div class="container">
+                  <div class="row justify-content-center">
+
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="table-wrap">
+
+
+                        <table id="example2" class="table table-bordered table-hover">
+                          <thead class="table-dark">
+                            <tr>
+                              <th>Servicio</th>
+                              <th>Cantidad</th>
+                              <th>Descripción</th>
+                              <th>Acciones</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let solicitud of solicitudes">
+                              <td>{{ solicitud.servicio }}</td>
+                              <td>{{ solicitud.cantidad }}</td>
+                              <td>{{ solicitud.descripcion }}</td>
+
+                              <td><button class="btn btn-warning m-2" data-toggle="modal" data-target="#exampleModal" (click)="cargarSolicitud(solicitud)"
+                                  ><i
+                                    class="fa-solid fa-pen-to-square"></i></button> <button class="btn btn-danger"
+                                  (click)="eliminarSolicitud(solicitud)"><i
+                                    class="fa-sharp fa-solid fa-trash-can"></i></button></td>
+
+                          </tbody>
+
+                        </table>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+            </div>
+            <!-- /.card-body -->
+          </div>
+
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+
+  </section>
+
+
+
+
+  <!-- modificarUsu -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modificar servicio</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <div class="container">
+            <!-- Info boxes -->
+            <div class="row p-2">
+              <div class="col-md-12">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Servicio</label>
+                  <input type="text" [(ngModel)]="editSolicitud.servicio" class="form-control"
+                    placeholder="Ingrese el servicio">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Cantidad</label>
+                  <input type="number" [(ngModel)]="editSolicitud.cantidad" class="form-control"
+                    placeholder="Ingrese la cantidad">
+                </div>
+                <div class="form-floating">
+                  <textarea class="form-control" [(ngModel)]="editSolicitud.descripcion"
+                    placeholder="Ingresa una descripcion" id="floatingTextarea2" style="height: 100px"></textarea>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+
+          <button type="button" class="btn btn-primary" (click)="modificarSolicitud()"
+            data-dismiss="modal">Modificar</button>
+        </div>
+      </div>
+
+
+
+
+
+
+    </div>
+  </div>
+
+
+
+
+
+</div>

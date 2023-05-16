@@ -1,0 +1,275 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2"></div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="mb-5 mx-2 blockquote">Servicios</h2>
+          <div class="card">
+            <div class="card-header">
+              <nav class="navbar bg-light mx-3">
+                <form class="d-flex" role="search">
+                  <input
+                    class="form-control me-2"
+                    type="search"
+                    placeholder="Buscar"
+                    aria-label="Search"
+                  />
+                  <button class="btn btn-outline-success" type="submit">
+                    Buscar
+                  </button>
+                </form>
+
+                <button
+                  class="btn btn-success float-right mt-1"
+                  data-toggle="modal"
+                  data-target="#agregarCliente"
+                >
+                  <i class="fa-solid fa-plus"></i>
+                </button>
+              </nav>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <section class="ftco-section">
+                <div class="container">
+                  <div class="row justify-content-center"></div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="table-wrap">
+                        <table
+                          *ngIf="servicios"
+                          id="example2"
+                          class="table table-bordered table-hover"
+                        >
+                          <thead class="table-dark">
+                            <tr>
+                              <th>Nombre servicio</th>
+                              <th>Categoria</th>
+                              <th>Costo unitario</th>
+                              <th>Estado</th>
+                              <th>Acciones</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let servicio of servicios">
+                              <td>{{ servicio.nombre_servicio }}</td>
+                              <td>{{ servicio.categoria }}</td>
+                              <td>{{ servicio.valor_unitario }}</td>
+                              <td>
+                                {{
+                                  servicio.estado === 1 ? "Activo" : "Inactivo"
+                                }}
+                              </td>
+                              <td>
+                                <button
+                                  class="btn btn-warning m-2" (click)="openModificarServicioModal(servicio)"
+                                  data-toggle="modal" 
+                                  data-target="#modificarCliente"
+                                >
+                                  <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                                <button
+                                  class="btn btn-danger"
+                                  (click)="deleteServicio(servicio.id_servicio)"
+                                >
+                                  <i class="fa-sharp fa-solid fa-trash-can"></i>
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <!-- /.card-body -->
+          </div>
+
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+
+    <!-- Registrar Cliente -->
+    <div
+      class="modal fade"
+      id="agregarCliente"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Registrar Cliente
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <!-- Info boxes -->
+              <div class="row">
+                <div class="col-lg-12">
+                  <form
+                    class="mt-3"
+                    [formGroup]="serviciosForm"
+                    (ngSubmit)="save()"
+                  >
+                    <div class="mb-3">
+                      <label for="nombre_servicio" class="form-label"
+                        >Nombre servicio</label
+                      >
+                      <input
+                        type="text"
+                        formControlName="nombre_servicio"
+                        class="form-control form-control-lg"
+                        placeholder="Nombre"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="valor_unitario" class="form-label"
+                        >Costo unitario</label
+                      >
+                      <input
+                        type="number"
+                        formControlName="valor_unitario"
+                        class="form-control form-control-lg"
+                        placeholder="Costo"
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="estado" class="form-label">Estado</label>
+                      <select
+                        formControlName="estado"
+                        class="form-select col-md-4"
+                        aria-label="Default select example"
+                      >
+                        <option value="1" selected>Activo</option>
+                        <option value="0">Inactivo</option>
+                      </select>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal"
+                      >
+                        Volver
+                      </button>
+                      <button type="submit" class="btn btn-success">
+                        Registrar
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modificarCliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modificar Servicio</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-12">
+                  <form
+                  class="mt-3"
+                  [formGroup]="serviciosForm"
+                  (ngSubmit)="save()"
+                >
+                  <div class="mb-3">
+                    <label for="nombre_servicio" class="form-label"
+                      >Nombre servicio</label
+                    >
+                    <input
+                      type="text"
+                      formControlName="nombre_servicio"
+                      class="form-control form-control-lg"
+                      placeholder="Nombre"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="valor_unitario" class="form-label"
+                      >Costo unitario</label
+                    >
+                    <input
+                      type="number"
+                      formControlName="valor_unitario"
+                      class="form-control form-control-lg"
+                      placeholder="Costo"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="estado" class="form-label">Estado</label>
+                    <select
+                      formControlName="estado"
+                      class="form-select col-md-4"
+                      aria-label="Default select example"
+                    >
+                      <option value="1" selected>Activo</option>
+                      <option value="0">Inactivo</option>
+                    </select>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-dismiss="modal"
+                    >
+                      Volver
+                    </button>
+                    <button type="submit" class="btn btn-success">
+                      Guardar
+                    </button>
+                  </div>
+                </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+
+
+  </section>
+</div>
+<!-- /.content-wrapper -->

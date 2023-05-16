@@ -1,0 +1,80 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="mb-5 mx-2 blockquote">Solicitudes</h2>
+          <div class="card">
+            <div class="card-header">
+              <nav class="navbar bg-light mx-3">
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Buscar</button>
+                </form>
+
+                <button routerLink="../crear-solicitudesCliente" class="btn btn-success float-right mt-1"><i
+                    class="fa-solid fa-plus"></i></button>
+              </nav>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <section class="ftco-section">
+                <div class="container">
+                  <div class="row justify-content-center">
+
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="table-wrap">
+
+
+                        <div class="list-group" *ngFor="let solicitud of solicitudesArray">
+                          <a routerLink="../verSolicitud" class="list-group-item list-group-item-action mt-2 mb-2"
+                            aria-current="true">
+                            {{ solicitud.servicios }}
+                            <i class="fa-regular fa-newspaper float-right"></i>
+                          </a>
+
+
+                        </div>
+
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+            </div>
+            <!-- /.card-body -->
+          </div>
+
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+
+
+  </section>
+
+
+
+</div>
+
+<!-- <router-oulet></router-oulet> -->

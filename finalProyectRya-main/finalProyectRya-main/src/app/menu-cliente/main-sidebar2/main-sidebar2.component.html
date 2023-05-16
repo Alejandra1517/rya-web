@@ -1,0 +1,65 @@
+<app-main-header></app-main-header>
+
+<app-footer></app-footer>
+
+<!-- <app-content-wrapper></app-content-wrapper> -->
+
+<!-- <app-control-sidebar></app-control-sidebar>  -->
+
+
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="info">
+          <div class="w-12 bg-dark col-lg"><i class="fa-solid fa-helmet-safety"></i> R Y A</div>
+        </div>
+      </div>
+
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-3">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item">
+            <a class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Menú
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a routerLink="servicios-clientes" class="nav-link">
+                  <i class="fa-solid fa-person-digging px-2"></i>
+                  <p>Servicios</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="solicitudes-clientes" class="nav-link">
+                  <i class="fa-regular fa-floppy-disk px-2"></i>
+                  <p>Mis solicitudes</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a routerLink="obras-clientes" class="nav-link">
+                  <i class="fa-sharp fa-solid fa-trowel-bricks px-2"></i>
+                  <p>Mis obras</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <router-outlet></router-outlet>

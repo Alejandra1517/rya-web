@@ -1,0 +1,245 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+       
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+
+    <!-- Main content -->  
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="mb-5 mx-2 blockquote">Materiales</h2>
+          <div class="card">
+            <div class="card-header">
+              <nav class="navbar bg-light mx-3">
+                  <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                  </form>
+       
+                  <button class="btn btn-success float-right mt-1" data-toggle="modal" data-target="#crearMaterial"><i class="fa-solid fa-plus"></i></button>
+              </nav>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <section class="ftco-section">
+                <div class="container">
+                  <div class="row justify-content-center">
+            
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="table-wrap">
+
+
+                        <table id="example2" class="table table-bordered table-hover">
+                          <thead class="table-dark">
+                            <tr>
+                              <th>Categoría</th>
+                              <th>Información material</th>
+                              <th>Estado</th>
+                              <th>Fecha</th>
+                              <th>Acciones</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let material of materiales">
+                               <td>{{ material.categoria }}</td>
+                               <td>{{ material.infoMaterial }}</td>
+                               <td>{{ material.estado }}</td>
+                               <td>{{ material.fecha }}</td>
+                               
+                               <td><button class="btn btn-warning m-2" data-toggle="modal" data-target="#exampleModal" (click)="cargarMaterial(material)" ><i class="fa-solid fa-pen-to-square"></i></button> <button class="btn btn-danger" (click)="eliminarMaterial(material)"><i class="fa-sharp fa-solid fa-trash-can"></i></button></td>
+                         
+                         
+                            </tbody>
+                         
+                        </table>
+                      
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            
+            </div>
+            <!-- /.card-body -->
+          </div>
+      
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+
+
+
+    
+
+<!-- crearUsu -->
+<div class="modal fade" id="crearMaterial" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Registrar Material</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="container">
+             <!-- Info boxes -->
+             <div class="row p-2">
+        
+              <div class="col-lg-12">
+                        <form class="mt-3" [formGroup]="materialesForm" (ngSubmit)="agregarMaterial()">
+                            <div class="mb-3">
+                                <input type="text" formControlName="categoria" [(ngModel)]="selectedMaterial.categoria" class="form-control form-control-lg"
+                                    placeholder="Producto">
+                                <div class="text-danger"
+                                    *ngIf="materialesForm.get('categoria')?.hasError('required') && materialesForm.get('categoria')?.touched">
+                                    <span>El nombre del producto <strong>es obligatorio</strong></span>
+                                </div>
+                                <div class="text-danger"
+                                *ngIf="materialesForm.get('categoria')?.hasError('pattern') && materialesForm.get('categoria')?.dirty">
+                                <span>Ingrese solamente <strong> texto </strong></span>
+                            </div>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" formControlName="infoMaterial" [(ngModel)]="selectedMaterial.infoMaterial" class="form-control form-control-lg"
+                                    placeholder="Categoria">
+                                <div class="text-danger"
+                                    *ngIf="materialesForm.get('infoMaterial')?.hasError('required') && materialesForm.get('infoMaterial')?.touched">
+                                    <span>La categoria <strong>es obligatoria</strong></span>
+                                </div>
+                                <div class="text-danger"
+                                *ngIf="materialesForm.get('infoMaterial')?.hasError('pattern') && materialesForm.get('infoMaterial')?.dirty">
+                                <span>Ingrese solamente <strong> texto </strong></span>
+                            </div>
+                            </div>
+                            <div class="mb-3">
+                              <label for="exampleFormControlInput1" class="form-label">Estado</label>
+                              <select class="form-select" aria-label="Default select example">
+                                <option selected>Disponible</option>
+                                <option value="1">Agotado</option>
+                              </select>
+                            </div>
+                            <div class="mb-3" class="modal-footer">
+                                <!-- <button routerLink="/" class="btn btn-secondary btn-lg float-start">VOLVER</button> -->
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
+                            <button type="submit" [disabled]="materialesForm.invalid" class="btn btn-success">Registar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+
+            </div>
+
+
+
+        </div>
+
+    
+      </div>
+    
+      
+    </div>
+
+
+
+
+
+<!-- modificarUsu -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modificar Material</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="container">
+             <!-- Info boxes -->
+        <div class="row p-4">
+         
+
+          <div class="col-lg-12">
+            <form class="mt-3" [formGroup]="materialesEditForm" (ngSubmit)="modificarMaterial()">
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Categoría</label>
+                    <input type="text" formControlName="categoria" [(ngModel)]="editMaterial.categoria" class="form-control form-control-lg"
+                        placeholder="Categoria">
+                    <div class="text-danger"
+                        *ngIf="materialesEditForm.get('categoria')?.hasError('required') && materialesEditForm.get('categoria')?.touched">
+                        <span>El este campo<strong>es obligatorio</strong></span>
+                    </div>
+                    <div class="text-danger"
+                    *ngIf="materialesEditForm.get('categoria')?.hasError('pattern') && materialesEditForm.get('categoria')?.dirty">
+                    <span>Ingrese solamente <strong> texto </strong></span>
+                </div>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Información del material</label>
+                    <input type="text" formControlName="infoMaterial" [(ngModel)]="editMaterial.infoMaterial" class="form-control form-control-lg"
+                        placeholder="Informacion del material">
+                    <div class="text-danger"
+                        *ngIf="materialesEditForm.get('infoMaterial')?.hasError('required') && materialesEditForm.get('infoMaterial')?.touched">
+                        <span>Este campo <strong>es obligatoria</strong></span>
+                    </div>
+                    <div class="text-danger"
+                    *ngIf="materialesEditForm.get('infoMaterial')?.hasError('pattern') && materialesEditForm.get('infoMaterial')?.dirty">
+                    <span>Ingrese solamente <strong> texto </strong></span>
+                </div>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">Estado</label>
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected>Disponible</option>
+                    <option value="1">Agotado</option>
+                  </select>
+                </div>
+                <div class="mb-3" class="modal-footer">
+                    <!-- <button routerLink="/" class="btn btn-secondary btn-lg float-start">VOLVER</button> -->
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
+                <button type="submit" [disabled]="materialesEditForm.invalid" [disabled]="materialesEditForm.invalid" class="btn btn-success">Guardar</button>
+                </div>
+            </form>
+        </div>
+
+        </div>
+        </div>
+
+    </div>
+      </div>
+    </div>
+
+
+  </div>
+<!-- </div> -->
+
+
+
+
+  </section>
+
+  
+
+  <!-- </div> -->
+

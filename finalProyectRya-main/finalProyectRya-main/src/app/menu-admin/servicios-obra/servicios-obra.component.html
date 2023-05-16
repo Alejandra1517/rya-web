@@ -1,0 +1,207 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+       
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+
+    <!-- Main content -->  
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="mb-5 mx-2 blockquote">Servicios obra</h2>
+          <div class="card">
+            <!-- /.card-header -->
+            <div class="card-body">
+              <section class="ftco-section">
+                <div class="container">
+                  <div class="row justify-content-center">
+            
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="table-wrap">
+
+                        <table id="example2" class="table table-bordered table-hover mt-3 p-2">
+                              
+                            <thead class="table-dark">
+                            <tr>
+                              <th>Servicio</th>
+                              <th>Estado</th>
+                              <td>Cantidad</td>
+                              <td>Materiales</td>
+                            </tr>
+                            </thead>
+
+                              <tbody>
+                                  <tr>
+                                      <td>Cimentacion</td>
+
+                                      <td>
+
+                                        <select class="form-select" aria-label="Default select example">
+                                          <option value="1">En proceso</option>
+                                          <option value="2">Terminado </option>
+                                          <option value="3">Cancelado</option>
+                                        </select>
+                                        
+                                    </td>
+
+                                    <td>
+
+                                      <div class="form-check form-switch">
+                                        2 m2
+                                    </div>
+
+                                    </td>
+
+                                    <td>
+
+                                        <button
+                                        class="btn btn-success mt-1 ml-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        ver
+                                      </button>
+
+                                      </td>
+                                     
+                                  </tr>
+
+                                  <tr>
+
+                                    <td>Remodelación</td>
+
+                          
+                                    
+                                      <td>
+
+                                        <select class="form-select" aria-label="Default select example">
+                                          <option value="1">En proceso</option>
+                                          <option value="2">Terminado </option>
+                                          <option value="3">Cancelado</option>
+                                        </select>
+
+                                      </td>
+
+                                      <td>
+
+                                        <div class="form-check form-switch">
+                                          6 m2
+                                      </div>
+
+                                      </td>
+
+                                      <td>
+
+                                        <button
+                                        class="btn btn-success mt-1 ml-5" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        ver
+                                      </button>
+
+                                      </td>
+                                     
+                                  </tr>
+                              </tbody>
+
+                          </table>
+
+
+                          <button
+                          class="btn btn-secondary float-right" routerLink="../obras">
+                          Volver
+                        </button>
+
+                      
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            
+            </div>
+            <!-- /.card-body -->
+          </div>
+      
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Materiales</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            
+
+            <nav class="navbar bg-light mx-3">
+              <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Buscar</button>
+              </form>
+
+            </nav>
+
+            <table id="example2" class="table table-bordered table-hover mt-4 p-2">
+              <thead class="table-dark">
+                <tr>
+                  <th>Nombre material</th>
+                  <th>Cantidad</th>
+                  <th>Precio unitario</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Barillas</td>
+                  <td>
+                    <input type="number" class="form-control sm-3" id="exampleInputEmail1"
+                      aria-describedby="emailHelp" value="2">
+                  </td>
+                  <td>30.000</td>
+                  <td>
+
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    </div>
+
+                  </td>
+              </tbody>
+
+            </table>
+
+            <label for="exampleFormControlInput1" class="form-label">Total materiales</label>
+
+            <fieldset disabled>
+              <input type="number" placeholder="100.000" class="form-control col-sm-3">
+            </fieldset>
+
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </section>
+
+  
+
+  </div>
